@@ -1,0 +1,32 @@
+{
+  "name": "Vault QuickNav",
+  "description": "Accessing Vault records are just a few keystrokes away!",
+  "version": "0.1",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Vault QuickNav",
+    "default_icon": "images/hello_extensions.png"
+  },
+  "background": {
+    "service_worker": "scripts/service_worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.veevavault.com/*"],
+      "js": ["scripts/content.js"],
+      "css": ["scripts/main.css"]
+    }
+  ],
+  "commands": {
+    "toggle-search-box": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Space",
+        "mac": "MacCtrl+Command+Space"
+      },
+      "description": "Toggle search box"
+    }
+  },
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "host_permissions": ["https://*.veevavault.com/*"]
+}
